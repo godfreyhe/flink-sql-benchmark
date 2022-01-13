@@ -67,7 +67,7 @@ public class Benchmark {
 		Options options = getOptions();
 		DefaultParser parser = new DefaultParser();
 		CommandLine line = parser.parse(options, args, true);
-        System.out.println("args: " + args);
+        System.out.println("args: " + String.join(" ", args));
 
         String mode = line.getOptionValue(MODE.getOpt(), "execute");
         TableEnvironment tEnv =
