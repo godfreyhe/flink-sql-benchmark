@@ -21,6 +21,7 @@ import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.configuration.GlobalConfiguration;
 import org.apache.flink.configuration.PipelineOptions;
 import org.apache.flink.table.api.EnvironmentSettings;
+import org.apache.flink.table.api.ExplainDetail;
 import org.apache.flink.table.api.TableEnvironment;
 import org.apache.flink.table.api.config.ExecutionConfigOptions;
 import org.apache.flink.table.api.config.OptimizerConfigOptions;
@@ -103,7 +104,7 @@ public class Benchmark {
         queries.forEach(
                 (name, sql) -> {
                     System.out.println("Start explain query: " + name);
-                    System.out.println(tEnv.explainSql(sql));
+                    System.out.println(tEnv.explainSql(sql, ExplainDetail.ESTIMATED_COST));
                 });
         printSummary(bestArray);
     }
